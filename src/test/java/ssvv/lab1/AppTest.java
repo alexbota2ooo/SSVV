@@ -14,7 +14,6 @@ import validation.TemaValidator;
 import validation.ValidationException;
 
 import static org.junit.Assert.*;
-import static org.junit.jupiter.api.Assertions.assertThrows;
 
 /**
  * Unit test for simple App.
@@ -66,92 +65,6 @@ public class AppTest
         // Duplicate
         Student student = new Student("999", "boro", 931, "boro@yahoo.com");
         assertNotNull(service.addStudent(student));
-    }
-
-    @Test
-    public void testAddStudent3() {
-        // Validation Error
-        Student student = new Student("", "boro", 931, "boro@yahoo.com");
-        Exception exception = assertThrows(ValidationException.class, ()->{service.addStudent(student);});
-
-        String expectedMessage = "Id incorect!";
-        String actualMessage = exception.getMessage();
-
-        assertTrue(actualMessage.contains(expectedMessage));
-    }
-
-    @Test
-    public void testAddStudent4() {
-        // Validation Error
-        Student student = new Student("999", "", 931, "boro@yahoo.com");
-        Exception exception = assertThrows(ValidationException.class, ()->{service.addStudent(student);});
-
-        String expectedMessage = "Nume incorect!";
-        String actualMessage = exception.getMessage();
-
-        assertTrue(actualMessage.contains(expectedMessage));
-    }
-
-    @Test
-    public void testAddStudent5() {
-        // Validation Error
-        Student student = new Student("999", "boro", -1, "boro@yahoo.com");
-        Exception exception = assertThrows(ValidationException.class, ()->{service.addStudent(student);});
-
-        String expectedMessage = "Grupa incorecta!";
-        String actualMessage = exception.getMessage();
-
-        assertTrue(actualMessage.contains(expectedMessage));
-    }
-
-    @Test
-    public void testAddStudent6() {
-        // Validation Error
-        Student student = new Student("999", "boro", 931, null);
-        Exception exception = assertThrows(ValidationException.class, ()->{service.addStudent(student);});
-
-        String expectedMessage = "Email incorect!";
-        String actualMessage = exception.getMessage();
-
-        assertTrue(actualMessage.contains(expectedMessage));
-    }
-
-    @Test
-    public void testAddStudent7() {
-        // Validation Error
-        Student student = new Student("999", null, 931, "boro@yahoo.com");
-        Exception exception = assertThrows(ValidationException.class, ()->{service.addStudent(student);});
-
-        String expectedMessage = "Nume incorect!";
-        String actualMessage = exception.getMessage();
-
-        assertTrue(actualMessage.contains(expectedMessage));
-    }
-
-    @Test
-    public void testAddStudent8() {
-        // Validation Error
-        Student student = new Student("999", "boro", 931, "");
-        Exception exception = assertThrows(ValidationException.class, ()->{service.addStudent(student);});
-
-        String expectedMessage = "Email incorect!";
-        String actualMessage = exception.getMessage();
-
-        assertTrue(actualMessage.contains(expectedMessage));
-    }
-
-    @Test
-    public void testAddStudent9() {
-        // BVA
-        Student student = new Student("998", "boro", 0, "boro@yahoo.com");
-        assertNull(service.addStudent(student));
-    }
-
-    @Test
-    public void testAddStudent10() {
-        // BVA
-        Student student = new Student("997", "boro", 1, "boro@yahoo.com");
-        assertNull(service.addStudent(student));
     }
 
 }
